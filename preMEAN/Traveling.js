@@ -42,7 +42,7 @@ var player = {
 function move(dir){
   if (dir == 'north'){
     if (player.location.north){
-      console.log(player.location.north.character);
+      console.log(`You are now at ${player.location.north.character}'s house.'`);
       player.location = player.location.north;
     }
     else{
@@ -51,7 +51,7 @@ function move(dir){
   }
   if (dir == 'east'){
     if (player.location.east){
-      console.log(player.location.east.character);
+      console.log(`You are now at ${player.location.east.character}'s house.'`);
       player.location = player.location.east;
     }
     else{
@@ -60,7 +60,7 @@ function move(dir){
   }
   if (dir == 'south'){
     if (player.location.south){
-      console.log(player.location.south.character);
+      console.log(`You are now at ${player.location.south.character}'s house.'`);
       player.location = player.location.south;
     }
     else{
@@ -69,7 +69,7 @@ function move(dir){
   }
   if (dir == 'west'){
     if (player.location.west){
-      console.log(player.location.west.character);
+      console.log(`You are now at ${player.location.west.character}'s house.'`);
       player.location = player.location.west;
     }
     else{
@@ -80,4 +80,9 @@ function move(dir){
 
 move('north')
 move('east')
+move('north')
 move('west')
+move('north')
+move('north')
+move('east')
+move('east')
