@@ -1,0 +1,10 @@
+.question {
+  background-color: lightyellow;
+  border: 1pt solid darkgrey;
+  border-radius: 5px;
+  font-weight: bold;
+  height: 200px;
+  margin: 25px auto;
+  padding: 5px;
+  width: 250px;
+}
