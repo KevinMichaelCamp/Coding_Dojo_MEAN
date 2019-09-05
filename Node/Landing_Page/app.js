@@ -17,7 +17,7 @@ const server = http.createServer(function (request, response){
       response.writeHead(200, {'Content-type': 'text/html'});
       response.write(contents);
       response.end();
-    })
+    });
   }
 
   else if(request.url === '/dojos/new') {
@@ -25,7 +25,7 @@ const server = http.createServer(function (request, response){
       response.writeHead(200, {'Content-type': 'text/html'});
       response.write(contents);
       response.end();
-    })
+    });
   }
 
   else if(request.url === '/style.css') {
@@ -33,7 +33,7 @@ const server = http.createServer(function (request, response){
       response.writeHead(200, {'Content-type': 'text/css'});
       response.write(contents);
       response.end();
-    })
+    });
   }
 
   // Error
