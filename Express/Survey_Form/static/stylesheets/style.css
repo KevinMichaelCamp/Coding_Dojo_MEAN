@@ -1,0 +1,33 @@
+button {
+  font-weight: bold !important;
+}
+
+.container {
+  padding: 25px;
+}
+
+.jumbotron{
+  text-align: center;
+}
+
+label{
+  font-weight: bold;
+  margin: 10px;
+  vertical-align: top;
+}
+
+table{
+  text-align: left;
+}
+
+td {
+  font-weight: bold;
+  padding: 5px;
+}
+
+textarea {
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 20px !important;
+  padding: 5px;
+}

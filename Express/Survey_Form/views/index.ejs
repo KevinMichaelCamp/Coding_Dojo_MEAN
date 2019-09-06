@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Survey Form</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Survey Form</h1>
+    </div>
+    <form action="/result" method="post">
+      <table>
+        <tr>
+          <td><label for="name">Your Name:</label></td>
+          <td><input id="name" type="text" name="name"></td>
+        </tr>
+        <tr>
+          <td><label for="location">Dojo Location:</label></td>
+          <td><select id="location" name="location">
+            <option value="Dallas, TX">Dallas, TX</option>
+            <option value="Mountain View, CA">Mountian View, CA</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td><label for="language">Favorite Language:</label></td>
+          <td><select id="language" name="language">
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="Ruby">Ruby</option>
+          </select></td>
+        </tr>
+      </table>
+      <label for="comment">Comment (optional):</label>
+      <textarea name="comment" rows="8" cols="40"></textarea>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+
+</html>
