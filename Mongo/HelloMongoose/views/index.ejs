@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Index Page</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Mongoose</h1>
+    </div>
+    <form action="/users" method="post">
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input id="name" type="text" name="name"></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input id="email" type="text" name="email"></td>
+        </tr>
+      </table>
+      <button class="btn btn-primary" type="submit">Submit Form</button>
+      <a href="/delete"><button class="btn btn-danger" type="button">Delete All Users</button></a>
+    </form>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+      </thead>
+      <tbody>
+        <% for(var i in users) { %>
+          <tr>
+            <td><%= users[i].name %></td>
+            <td><%= users[i].email %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <% if(messages.registration) { %>
+         <% for (var x of messages.registration) { %>
+          <p class="text-danger"><%= x %></p>
+         <% } %>
+     <% } %>
+  </div>
+</body>
+
+</html>

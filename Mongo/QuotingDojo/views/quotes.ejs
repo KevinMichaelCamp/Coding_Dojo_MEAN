@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Quoting Dojo</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Here are the Quotes</h1>
+    </div>
+    <div class="main">
+      <% for(var i in quotes) { %>
+        <p>"<%= quotes[i].content %>"</p>
+        <p class="text-primary">- <%= quotes[i].name %></p>
+      <% } %>
+    </div>
+    <a href="/"><button class="btn btn-primary" type="button">Go Back</button> </a>
+  </div>
+</body>
+
+</html>

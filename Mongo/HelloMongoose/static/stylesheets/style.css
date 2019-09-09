@@ -1,0 +1,9 @@
+.container {
+  padding: 25px;
+  text-align: center;
+}
+
+td {
+  font-weight: bold;
+  padding: 5px;
+}

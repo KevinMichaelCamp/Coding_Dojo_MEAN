@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Quoting Dojo</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to Quoting Dojo</h1>
+    </div>
+    <form action="/quotes" method="post">
+      <table>
+        <tr>
+          <td><label for="name">Your Name:</label></td>
+          <td><input id="name" type="text" name="name"></td>
+        </tr>
+        <tr>
+          <td><label for="content">Your Quote:</label></td>
+          <td><textarea name="content" rows="8" cols="40"></textarea></td>
+        </tr>
+      </table>
+      <button class="btn btn-success"type="submit">Add my quote!</button>
+      <a href="/quotes"><button class="btn btn-primary" type="button">Skip to quotes!</button></a>
+    </form>
+    <% if(messages.addQuote) { %>
+         <% for (var x of messages.addQuote) { %>
+          <p class="text-danger"><%= x %></p>
+         <% } %>
+     <% } %>
+  </div>
+</body>
+
+</html>
