@@ -23,8 +23,6 @@ module.exports = {
   },
 
   display: function(req, res){
-    quote = Quote.find({name: 'Kevin Camp'})
-    console.log(quote);
     Quote.find({}).sort('-createdAt').exec(function(err, quotes){
       if (err) {
         console.log(err);

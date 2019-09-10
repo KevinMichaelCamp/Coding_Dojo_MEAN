@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Chicken Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Add New Chicken</h1>
+    </div>
+    <form action="/chickens" method="post">
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input id="name" type="text" name="name" required min="2"></td>
+        </tr>
+        <tr>
+          <td><label for="age">Age:</label></td>
+          <td><input id="age" type="text" name="age" required></td>
+        </tr>
+        <tr>
+          <td><label for="color">Color:</label></td>
+          <td><input id="color" type="text" name="color" required min="3"></td>
+        </tr>
+        <tr>
+          <td><label for="description">Decsription:</label></td>
+          <td><textarea name="description" required min="2" rows="8" cols="40"></textarea></td>
+        </tr>
+      </table>
+      <button class="btn btn-primary" type="submit">Add This Chicken</button>
+      <a href="/"><button class="btn btn-info" type="button">Go Back</button></a>
+    </form>
+  </div>
+</body>
+
+</html>

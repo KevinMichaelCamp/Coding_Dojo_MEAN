@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Chicken Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Chicken Info</h1>
+    </div>
+    <main>
+      <h2>Name: <%= chicken.name %></h2>
+      <h3>Age: <%= chicken.age %></h3>
+      <h3>Color: <%= chicken.color %></h3>
+      <h3>Description: <%= chicken.description %></h3>
+    </main>
+    <a href="/chickens/edit/<%= chicken._id %>"><button class="btn btn-success" type="button">Edit Chicken</button></a>
+    <a href="/chickens/destroy/<%= chicken._id %>"><button class="btn btn-danger" type="button">Delete Chicken</button></a>
+    <a href="/"><button class="btn btn-primary" type="button">Go Back</button></a>
+  </div>
+
+</body>
+
+</html>

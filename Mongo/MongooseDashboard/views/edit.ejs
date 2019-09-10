@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Chicken Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Edit Chicken - "<%= chicken.name %>"</h1>
+    </div>
+    <form action="/chickens/<%= chicken._id %>" method="post">
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input id="name" type="text" name="name" required min="2" value="<%= chicken.name %>"></td>
+        </tr>
+        <tr>
+          <td><label for="age">Age:</label></td>
+          <td><input id="age" type="text" name="age" required value="<%= chicken.age %>"></td>
+        </tr>
+        <tr>
+          <td><label for="color">Color:</label></td>
+          <td><input id="color" type="text" name="color" required min="3" value="<%= chicken.color %>"></td>
+        </tr>
+        <tr>
+          <td><label for="description">Description:</label></td>
+          <td><textarea name="description" required min="2" placeholder="<%= chicken.description %>" value="<%= chicken.description %>"rows="8" cols="40"></textarea></td>
+        </tr>
+        <button class="btn btn-success" type="submit">Edit This Chicken</button>
+        <a href="/"><button class="btn btn-primary" type="button">Go Back</button></a>
+      </table>
+    </form>
+  </div>
+</body>
+
+</html>
