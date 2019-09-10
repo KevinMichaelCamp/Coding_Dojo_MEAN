@@ -93,7 +93,7 @@ module.exports = {
     })
     .catch(err => {
       console.log(err);
-      res.redirect('/')
+      res.redirect(`/chickens/edit/${req.params.id}`)
     })
   }
 }

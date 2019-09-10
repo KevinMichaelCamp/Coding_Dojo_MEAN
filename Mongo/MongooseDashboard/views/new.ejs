@@ -16,25 +16,36 @@
     <div class="jumbotron">
       <h1>Add New Chicken</h1>
     </div>
-    <form action="/chickens" method="post">
-      <table>
-        <tr>
-          <td><label for="name">Name:</label></td>
-          <td><input id="name" type="text" name="name" required min="2"></td>
-        </tr>
-        <tr>
-          <td><label for="age">Age:</label></td>
-          <td><input id="age" type="text" name="age" required></td>
-        </tr>
-        <tr>
-          <td><label for="color">Color:</label></td>
-          <td><input id="color" type="text" name="color" required min="3"></td>
-        </tr>
-        <tr>
-          <td><label for="description">Decsription:</label></td>
-          <td><textarea name="description" required min="2" rows="8" cols="40"></textarea></td>
-        </tr>
-      </table>
+    <div class="row">
+      <div class="col-8">
+        <form action="/chickens" method="post">
+          <table>
+            <tr>
+              <td><label for="name">Name:</label></td>
+              <td><input id="name" type="text" name="name" required min="2"></td>
+            </tr>
+            <tr>
+              <td><label for="age">Age:</label></td>
+              <td><input id="age" type="text" name="age" required></td>
+            </tr>
+            <tr>
+              <td><label for="color">Color:</label></td>
+              <td><input id="color" type="text" name="color" required min="3"></td>
+            </tr>
+            <tr>
+              <td><label for="description">Decsription:</label></td>
+              <td><textarea name="description" required min="2" rows="8" cols="40"></textarea></td>
+            </tr>
+          </table>
+      </div>
+      <div class="col-4">
+        <% if(messages.create)  { %>
+          <% for(var message of messages.create) { %>
+            <p class="text-danger font-weight-bold"><%= message %></p>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
       <button class="btn btn-primary" type="submit">Add This Chicken</button>
       <a href="/"><button class="btn btn-info" type="button">Go Back</button></a>
     </form>
