@@ -1,0 +1,26 @@
+button {
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  margin: 20px !important;
+}
+.container {
+  padding: 50px;
+  text-align: center;
+}
+
+input {
+  padding: 5px;
+}
+
+label {
+  font-weight: bold;
+}
+
+main{
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  text-align: left;
+}

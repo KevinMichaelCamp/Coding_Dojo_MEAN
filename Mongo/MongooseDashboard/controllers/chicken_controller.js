@@ -65,7 +65,7 @@ module.exports = {
 
   index: function(req, res){
     Chicken.find({}, function(err, chickens){
-      if (err) {
+      if(err){
         console.log(err);
         res.redirect('/')
       }

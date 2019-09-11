@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login/Register Page</title>
+  </head>
+  <body>
+    <h1>Register</h1>
+    <% if(messages.regerr){ %>
+      <% for(var m of messages.regerr){ %>
+        <p><%= m %></p>
+      <% } %>
+    <% } %>
+
+    <% if(messages.hasherr){ %>
+      <% for(var m of messages.hasherr){ %>
+        <p><%= m %></p>
+      <% } %>
+    <% } %>
+
+    <p>Errors go here!</p>
+    <form action='/register' method='post'>
+      Name: <input type='text' name='name'>
+      Email: <input type='email' name='email'>
+      Password: <input type="password" name="password">
+      Password Confirmation: <input type="password" name="password_conf">
+      <input type="submit" value="Submit">
+    </form>
+    <br>
+    <h1>Login</h1>
+    <% if(messages.loginerr){ %>
+      <% for(var m of messages.loginerr){ %>
+        <p><%= m %></p>
+      <% } %>
+    <% } %>
+    <form action='/login' method='post'>
+      Email: <input type='email' name='email'>
+      Password: <input type="password" name="password">
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
