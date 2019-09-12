@@ -1,10 +1,10 @@
 {
-  "name": "int_express",
+  "name": "LoginRegistration",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -13,8 +13,8 @@
     "bcrypt": "^3.0.6",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
-    "express-session": "^1.16.2"
-  },
-  "devDependencies": {},
-  "description": ""
+    "express-flash": "0.0.2",
+    "express-session": "^1.16.2",
+    "mongoose": "^5.7.0"
+  }
 }

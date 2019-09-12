@@ -9,7 +9,7 @@ app.use(session({
   secret: 'keyboardkitteh',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 600000 }
 }))
 app.use(flash());
 app.use(express.static(__dirname + '/static'));

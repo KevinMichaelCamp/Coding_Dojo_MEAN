@@ -1,103 +1,109 @@
-var User = require('../models/user.js');
+var User = require('../models/user');
 var bcrypt = require('bcrypt');
 
 module.exports = {
-
-  // home_function: function(req, res){
-  //   res.redirect("/")
-  // },
 
   index: function(req, res){
     res.render('index')
   },
 
-  create: function(req, res){
-    console.log("req.body is", req.body)
-    let user = new User();
-    console.log("user before assignments is", user)
-    user.name = req.body.name;
-    user.email = req.body.email;
-    user.password = req.body.password;
-    user.validate(function(err){
-      if (err) {
-        for(var key in err.errors){
-          req.flash("regerr", err.errors[key].message);
-        }
-        res.redirect("/");
+
+  home: function(req, res){
+    User.findOne({_id: req.session.user_id}, function(err, user){
+      if(err){
+        console.log(err);
+        res.redirect('/')
       }
       else{
-        console.log("user before save is", user)
-        bcrypt.hash(req.body.password, 10)
-          .then(hashpw => {
-            user.password = hashpw;
-            user.save()
-            .then(data => {
-              console.log("successfully created user", data);
-              req.session['user_id'] = user._id
-              console.log(req.session['user_id'])
-              res.redirect('/success')
-            })
-            .catch(err => {
-              for(var key in err.errors){
-                req.flash("regerr", err.errors[key].message);
-              }
-              res.redirect("/");
-            });
-          })
-          .catch(err => {
-              // res.json(err)
-              for(var key in err.errors){
-                req.flash("hasherr", err.errors[key].message);
-              }
-              res.redirect("/");
-          });
+        res.render('home', {user: user})
       }
-    })
-    
-    // if(req.body.password.length == 0){
-    //   req.flash("")
-    // }
-
-    
+    });
   },
 
-  success: function(req, res){
-    res.render("success")
-  },
 
   login: function(req, res){
-    console.log("req.body is", req.body)
-    User.find({email:req.body.email}, (err, this_user) => {
-        if (err) {
+    User.findOne({email: req.body.email})
+    .then(user => {
+      if(user == null){
+        req.flash('error', "Email not found")
+        res.redirect('/')
+      }
+      else{
+        bcrypt.compare(req.body.password, user.password)
+        .then(result => {
+          if(result){
+            req.session.user_id = user._id;
+            res.redirect('/home')
+          }
+          else{
+            req.flash('error', "Invalid password")
+            res.redirect('/')
+          }
+        })
+        .catch(err => {
           for(var key in err.errors){
-            req.flash("loginerr", err.errors[key].message);
+            req.flash("errors", err.errors[key].message);
           }
           res.redirect('/')
-        }
-        else {
-          console.log(this_user)
-            bcrypt.compare(req.body.password, this_user[0].password)
-              .then(result => {
-                  if (result){
-                    console.log("true")
-                    req.session['user_id'] = this_user[0]._id
-                    res.redirect('/success')
-                  }
-                  else{
-                    console.log("false")
-                    req.flash("loginerr", "You cannot be logged in");
-                    res.redirect('/')
-                  }
-              })
-              .catch(err => {
-                  for(var key in err.errors){
-                    req.flash("hasherr", err.errors[key].message);
-                  }
-                  res.redirect('/')
-              })
-        }
+        })
+      }
     })
-    
+    .catch(err => {
+      console.log(err);
+      res.redirect('/')
+    })
   },
 
+
+  register: function(req, res){
+    User.find({email: req.body.email})
+    .then(user => {
+      if(user.length > 0){
+        req.flash('error', "Email already in use");
+        res.redirect('/')
+      }
+      else{
+        if(req.body.password != req.body.pw_confirm){
+          req.flash('error', "Password does not match confirmation");
+          res.redirect('/')
+        }
+        else{
+          let user = new User();
+          user.first_name = req.body.first_name;
+          user.last_name = req.body.last_name;
+          user.email = req.body.email;
+          user.birthday = req.body.birthday;
+          user.password = req.body.password;
+          user.validate(function(err){
+            if(err){
+              for(var key in err.errors){
+                req.flash('errors', err.errors[key].message);
+              }
+            res.redirect('/')
+            }
+            else{
+              console.log("user before save is", user)
+              bcrypt.hash(user.password, 10)
+              .then(hashpw => {
+                user.password = hashpw;
+                user.save()
+                .then(newUser => {
+                  console.log("successfully created user:", newUser);
+                  req.session.user_id = newUser._id;
+                  console.log(req.session.user_id);
+                  res.redirect('/home')
+                })
+                .catch(err => {
+                  for(var key in err.errors){
+                    req.flash('errors', err.errors[key].message);
+                  }
+                  res.redirect('/')
+                })
+              })
+            }
+          })
+        }
+      }
+    })
+  }
 }

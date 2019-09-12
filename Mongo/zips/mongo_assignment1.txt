@@ -1,0 +1,45 @@
+> use my_first_database
+
+> db.createCollection('students')
+
+> db.students.insert({name: 'Kevin', home_state: 'Colorado', lucky_number: 7, birthday: {month: 11, day: 20, year: 1979}})
+> db.students.insert({name: 'Bob', home_state: 'Texas', lucky_number: 6, birthday: {month: 5, day: 4, year: 1950}})
+> db.students.insert({name: 'Chris', home_state: 'New York', lucky_number: 5, birthday: {month: 7, day: 7, year: 1977}})
+> db.students.insert({name: 'Jane', home_state: 'Ohio', lucky_number: 4, birthday: {month: 2, day: 6, year: 1990}})
+> db.students.insert({name: 'Julie', home_state: 'Kansas', lucky_number: 2, birthday: {month: 12, day: 25, year: 1985}})
+
+> db.students.find().pretty()
+
+> db.students.find({ $or: [{home_state: 'Colorado'}, { home_state: 'Texas'}] }).pretty()
+
+> db.students.find({lucky_number: {$gt: 3}}).pretty()
+> db.students.find({lucky_number: {$lte: 10}}).pretty()
+> db.students.find({ $and: [{lucky_number: {$gte: 1}}, {lucky_number: {$lte: 9}}] }).pretty()
+
+> db.students.update({},{$set: {"interests":['coding', 'brunch', 'MongoDB']}},{multi:true})
+
+> db.students.update({name: 'Kevin'}, {$push: {interests: 'skiing' }})
+> db.students.update({name: 'Bob'}, {$push: {interests: 'carpentry' }})
+> db.students.update({name: 'Chris'}, {$push: {interests: 'video games' }})
+> db.students.update({name: 'Jane'}, {$push: {interests: 'ice skating' }})
+> db.students.update({name: 'Julie'}, {$push: {interests: 'cooking' }})
+
+> db.students.update({name: 'Julie'}, {$push: {interests: 'taxes'}})
+
+> db.students.update({name: 'Julie'}, {$pull: {interests: 'taxes'}})
+
+> db.students.remove({home_state: 'Ohio'})
+
+> db.students.remove({name: 'Chris'})
+
+> db.students.remove({lucky_number: {$gt: 5}}, true)
+
+> db.students.update({}, {$set: {'number_of_belts': 0}}, {multi:true})
+
+> db.students.update({home_state: 'Texas'}, {$inc: {number_of_belts: 1}}, {multi:true})
+
+> db.students.update({}, {$rename: {'number_of_belts' : 'belts_earned'}}, {multi:true})
+
+> db.students.update({}, {$unset: {lucky_number: ""}}, {multi:true})
+
+> db.students.update({}, {$currentDate: {updated_on:true}}, {multi:true})

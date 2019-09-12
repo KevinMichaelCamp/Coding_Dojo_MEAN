@@ -1,42 +1,80 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Login/Register Page</title>
-  </head>
-  <body>
-    <h1>Register</h1>
-    <% if(messages.regerr){ %>
-      <% for(var m of messages.regerr){ %>
-        <p><%= m %></p>
-      <% } %>
-    <% } %>
 
-    <% if(messages.hasherr){ %>
-      <% for(var m of messages.hasherr){ %>
-        <p><%= m %></p>
-      <% } %>
-    <% } %>
+<head>
+  <meta charset="utf-8">
+  <title>Login & Registration</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
 
-    <p>Errors go here!</p>
-    <form action='/register' method='post'>
-      Name: <input type='text' name='name'>
-      Email: <input type='email' name='email'>
-      Password: <input type="password" name="password">
-      Password Confirmation: <input type="password" name="password_conf">
-      <input type="submit" value="Submit">
-    </form>
-    <br>
-    <h1>Login</h1>
-    <% if(messages.loginerr){ %>
-      <% for(var m of messages.loginerr){ %>
-        <p><%= m %></p>
-      <% } %>
-    <% } %>
-    <form action='/login' method='post'>
-      Email: <input type='email' name='email'>
-      Password: <input type="password" name="password">
-      <input type="submit" value="Submit">
-    </form>
-  </body>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Login & Registration</h1>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2 class="pb-2 m-4 mb-2 border-bottom">Login</h2>
+        <form action="/login" method="post">
+          <table>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td><input id="email" type="email" name="email" required></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password:</label></td>
+              <td><input id="password" type="password" name="password" required min="8"></td>
+            </tr>
+          </table>
+          <button class="btn btn-outline-primary" type="submit">Login</button>
+        </form>
+        <% if(messages.errors){ %>
+          <% for(var error of messages.errors){ %>
+            <p class="error"><%= error %></p>
+          <% } %>
+        <% } %>
+        <% if(messages.error){ %>
+            <p class="error"><%= messages.error  %></p>
+        <% } %>
+      </div>
+      <div class="col">
+        <h2 class="pb-2 m-4 border-bottom">Register</h2>
+        <form action="/register" method="post">
+          <table>
+            <tr>
+              <td><label for="first_name">First Name:</label></td>
+              <td><input id="first_name" type="text" name="first_name" required min="2"></td>
+            </tr>
+            <tr>
+              <td><label for="last_name">Last Name:</label></td>
+              <td><input id="last_name" type="text" name="last_name" required min="2"></td>
+            </tr>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td><input id="email" type="email" name="email" required></td>
+            </tr>
+            <tr>
+              <td><label for="birthday">Birthday:<label></td>
+              <td><input id="date" type="date" name="birthday" required></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password:</label></td>
+              <td><input id="password" type="password" name="password" required min="8"></td>
+            </tr>
+            <tr>
+              <td><label for="pw_confirm">Confirm Password:</label></td>
+              <td><input id="pw_confirm" type="password" name="pw_confirm" required min="8"></td>
+            </tr>
+          </table>
+          <button class="btn btn-outline-primary" type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>

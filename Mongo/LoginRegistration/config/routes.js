@@ -1,9 +1,8 @@
-var our_controller = require('../controllers/controller.js');
+var controller = require('../controllers/controller');
 
-module.exports = function(app) {
-  // app.get('/home', our_controller.home_function);
-  app.post('/register', our_controller.create);
-  app.post('/login', our_controller.login);
-  app.get('/', our_controller.index);
-  app.get("/success", our_controller.success);
+module.exports = function(app){
+  app.get('/', controller.index);
+  app.get('/home', controller.home);
+  app.post('/login', controller.login);
+  app.post('/register', controller.register);
 }
