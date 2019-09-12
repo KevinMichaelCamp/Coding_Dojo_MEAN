@@ -12,7 +12,7 @@ module.exports = {
   create: function(req, res){
     Person.create(req.params)
       .then(person => res.json(
-      .catch(err => res.json(error));
+      .catch(err => res.json(err));
   },
 
 
@@ -21,7 +21,7 @@ module.exports = {
     .then(person => {
       res.json(person ? person : "No such person in database")
     })
-    .catch(err => res.json(error));
+    .catch(err => res.json(err));
   },
 
 
@@ -29,7 +29,7 @@ module.exports = {
     console.log(req.params);
     Person.remove(req.params)
       .then(result => res.json(result))
-      .catch(err => res.json(error));
+      .catch(err => res.json(err));
   }
 
 }
