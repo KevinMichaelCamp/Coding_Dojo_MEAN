@@ -5,32 +5,31 @@ module.exports = {
 
   create_comment: function(req, res){
     const messageId = req.params.id;
-    Message.findOne({_id: req.params.id}, function(err, post){
-      var comment = new Comment({
-        name: req.body.name,
-        comment: req.body.comment,
-        _message: post._id
-      });
-      comment.save()
-      .then(newComment => {
-        Message.findOneAndUpdate({_id: messageId}, {$push: {comments: newComment}}, function(err, data){
-          if(err){
-            console.log(err);
-          }
-          else{
-            res.redirect('/')
-          }
-        });
-      })
-      .catch(err => {
-        console.log("We have an error", err);
-        for(var key in err.errors){
-          console.log(err.errors);
-          req.flash('comment', err.errors[key].message);
+    var comment = new Comment({
+      name: req.body.name,
+      comment: req.body.comment,
+      _message: messageId
+    });
+    comment.save()
+    .then(newComment => {
+      Message.findOneAndUpdate({_id: messageId}, {$push: {comments: newComment}}, function(err, data){
+        if(err){
+          console.log(err);
         }
-        res.redirect('/')
-      })
+        else{
+          res.redirect('/')
+        }
+      });
     })
+    .catch(err => {
+      console.log("We have an error", err);
+      for(var key in err.errors){
+        console.log(err.errors);
+        req.flash('comment', err.errors[key].message);
+      }
+      res.redirect('/')
+    })
+
   },
 
 

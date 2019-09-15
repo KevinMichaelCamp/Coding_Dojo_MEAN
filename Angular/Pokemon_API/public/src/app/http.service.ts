@@ -28,7 +28,7 @@ export class HttpService {
       for (const i of Object.keys(abilities)) {
         const ability = this._HTTP.get(`${abilities[i].ability.url}`);
         ability.subscribe((info: any) => {
-          console.log(`Other Pokemon with Ability: ${info.names[2].name}`);
+          console.log(`***Other Pokemon with Ability: ${info.names[2].name}`);
           const otherPoke = info.pokemon;
           for (const j of Object.keys(otherPoke)) {
             console.log(titleCase(otherPoke[j].pokemon.name));

@@ -11,7 +11,7 @@ module.exports = {
 
   create: function(req, res){
     Person.create(req.params)
-      .then(person => res.json(
+      .then(person => res.json(person))
       .catch(err => res.json(err));
   },
 

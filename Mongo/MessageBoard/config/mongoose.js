@@ -1,6 +1,7 @@
-var path = require('path');
-var fs = require('fs');
-var mongoose = require('mongoose');
+const mongoose  = require('mongoose'),
+      path      = require('path'),
+      fs        = require('fs');
+
 
 mongoose.connect('mongodb://localhost/messages', {useNewUrlParser:true});
 var models_path = path.join(__dirname, './../models');
