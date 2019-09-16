@@ -5,16 +5,67 @@
 
 
 <div class="container">
-  <div class="jumbotron">
-    <h1>Restful API Tasks</h1>
+  <div class="jumbotron vertical-center">
+    <h1>RESTful API Tasks</h1>
   </div>
-  <main>
-    <button class="btn btn-outline-primary" (click)="getTasksFromService()">GET ALL TASKS</button>
-    <h4 *ngFor="let task of tasks">{{ task.title }} <button class="btn btn-outline-info" (click)="getTaskFromService(task._id)">SHOW</button></h4>
-  </main>
-  <div class="task" *ngIf="task">
-    <h4>{{ task.title }}</h4>
-    <h5>{{ task.description }}</h5>
+  <form class="form" (submit)="onCreate()">
+    <h2>New Task</h2>
+    <div class="row">
+      <div class="col-4">
+        <table>
+          <tr>
+            <td><label for="title">Title:</label></td>
+            <td><input type="text" name="newTask.title" id="title" [(ngModel)]="newTask.title"></td>
+          </tr>
+          <tr>
+            <td><label for="description">Description:</label></td>
+            <td><input type="text" name="newTask.description" id="description" [(ngModel)]="newTask.description"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-8 submit">
+        <button class="btn btn-success" type="submit">Create Task</button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col">
+      <h2>Task List</h2>
+      <div class="scroll">
+        <div class="task" *ngFor="let t of tasks">
+          <div class="row pb-2 mt-4 mb-2 border-bottom">
+            <div class="col">
+                <h5>{{ t.title }}</h5>
+                <h6>{{ t.description }}</h6>              
+            </div>
+            <div class="col">
+              <button class="btn btn-info" (click)="getTaskFromService(t._id)">Edit</button>
+              <button class="btn btn-danger" (click)="onDelete(t._id)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="task" *ngIf="task">
+        <h2>Edit a Task</h2>
+        <form (submit)="onEdit(task._id)">
+          <table>
+            <tr>
+              <td><label for="title">Title:</label></td>
+              <td><input type="text" name="editTask.title" id="title" [(ngModel)]="editTask.title" [value]="task.title"></td>
+            </tr>
+            <tr>
+              <td><label for="description">Description:</label></td>
+              <td><input type="text" name="editTask.description" id="description" [(ngModel)]="editTask.description"></td>
+            </tr>
+          </table>
+          <button class="btn btn-success indent" type="submit">Update Task</button>
+        </form>
+        <h4>{{ task.title }}</h4>
+        <h5>{{ task.description }}</h5>
+      </div>
+    </div>
   </div>
 </div>
   

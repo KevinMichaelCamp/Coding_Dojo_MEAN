@@ -7,15 +7,15 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Sup dog?... heard you like MEAN';
   tasks: object[];
   task: object;
+  newTask: object;
+  editTask: object;
 
   constructor(private httpService: HttpService) {}
     ngOnInit() {
-      // this.getTasksFromService();
-      // this.getTaskFromService();
-      // this.deleteTaskFromService();
+      this.getTasksFromService();
+      this.newTask = { title: '', description: '' };
     }
 
     getTasksFromService() {
@@ -34,10 +34,28 @@ export class AppComponent implements OnInit {
       });
     }
 
-    deleteTaskFromService() {
-      const deleteTask = this.httpService.deleteTask();
+    onCreate() {
+      const newTask = this.httpService.createTask(this.newTask);
+      newTask.subscribe((data: any) => {
+        this.getTasksFromService();
+        console.log('New Task:', data);
+      });
+      this.newTask = { title: '', description: '' };
+    }
+
+    // onEdit(id) {
+    //   const editTask = this.httpService.updateTask(id, this.editTask);
+    //   editTask.subscribe((data: any) => {
+    //     this.getTasksFromService();
+    //     console.log('Edited Task:', data);
+    //   });
+    // }
+
+    onDelete(id) {
+      const deleteTask = this.httpService.deleteTask(id);
       deleteTask.subscribe((result: any) => {
         console.log('Deleting 1 task', result);
+        this.getTasksFromService();
       });
     }
 }

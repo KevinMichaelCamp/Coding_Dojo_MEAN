@@ -12,11 +12,17 @@ export class HttpService {
   getTasks() {
     return this.http.get('/tasks');
   }
-  getTasksID(id) {
+  getTasksID(id: string) {
     return this.http.get(`/tasks/${id}`);
   }
-  deleteTask() {
-    return this.http.get('/tasks/5d7d4bc68b195e04d103590c');
+  createTask(newTask: object) {
+    return this.http.post('/tasks', newTask);
+  }
+  // updateTask(id: string, body) {
+  //   return this.http.patch(`/tasks/${id}`);
+  // }
+  deleteTask(id: string) {
+    return this.http.delete(`/tasks/${id}`);
   }
 
 }
