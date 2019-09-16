@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 
 @Component({
@@ -6,10 +6,38 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Sup dog?... heard you like MEAN';
+  tasks: object[];
+  task: object;
 
-  constructor(private _httpService: HttpService){
+  constructor(private httpService: HttpService) {}
+    ngOnInit() {
+      this.getTasksFromService();
+      this.getTaskFromService();
+      // this.deleteTaskFromService();
+    }
 
-  }
+    getTasksFromService() {
+      const tasks = this.httpService.getTasks();
+      tasks.subscribe((data: any) => {
+        console.log('Got our tasks!', data);
+        this.tasks = data;
+      });
+    }
+
+    getTaskFromService() {
+      const task = this.httpService.getTasksID();
+      task.subscribe((data: any) => {
+        console.log('We got 1 task!', data);
+        this.task = data;
+      });
+    }
+
+    deleteTaskFromService() {
+      const deleteTask = this.httpService.deleteTask();
+      deleteTask.subscribe((result: any) => {
+        console.log('Deleting 1 task', result);
+      });
+    }
 }

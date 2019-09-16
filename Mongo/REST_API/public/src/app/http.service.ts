@@ -7,25 +7,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HttpService {
 
-  constructor(private _http: HttpClient) {
-    this.getTasks();
-    this.getTasksID();
-    // this.deleteTask();
+  constructor(private http: HttpClient) {}
+
+  getTasks() {
+    return this.http.get('/tasks');
   }
-
-  getTasks(){
-    let tempObservable = this._http.get('/tasks');
-    tempObservable.subscribe(data => console.log("Got our tasks!", data));
+  getTasksID() {
+    return this.http.get('/tasks/5d7d50d1ebc9126b0877e3ce');
   }
-
-  getTasksID(){
-    let tempObservable = this._http.get('/tasks/5d7d50d1ebc9126b0877e3ce');
-    tempObservable.subscribe(data => console.log("We got 1 task!", data));
+  deleteTask() {
+    return this.http.get('/tasks/5d7d4bc68b195e04d103590c');
   }
-
-  // deleteTask(){
-  //   let tempObservable = this._http.delete('/tasks/5d7d4bc68b195e04d103590c');
-  //   tempObservable.subscribe(result => console.log("Deleting 1 task", result))
-  // }
-
 }
