@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
 
   constructor(private httpService: HttpService) {}
     ngOnInit() {
-      this.getTasksFromService();
-      this.getTaskFromService();
+      // this.getTasksFromService();
+      // this.getTaskFromService();
       // this.deleteTaskFromService();
     }
 
@@ -26,8 +26,8 @@ export class AppComponent implements OnInit {
       });
     }
 
-    getTaskFromService() {
-      const task = this.httpService.getTasksID();
+    getTaskFromService(id) {
+      const task = this.httpService.getTasksID(id);
       task.subscribe((data: any) => {
         console.log('We got 1 task!', data);
         this.task = data;
