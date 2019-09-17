@@ -1,0 +1,53 @@
+.cakerow {
+    margin: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.cakerow input, textarea, button {
+    margin: 3px;
+    vertical-align: top;
+}
+
+.cakerow button {
+    padding: 2px !important;
+}
+
+.container {
+    padding: 25px;
+    text-align: center;
+}
+
+h4 {
+    display: inline-block;
+}
+
+
+.submit input {
+    padding: 5px;
+}
+
+img {
+    height: 150px;
+    width: 150px;
+}
+
+.jumbotron {
+    align-items: center;
+    display: flex;
+    height: 50px !important;
+    justify-content: center;
+    padding: 40px !important;
+}
+
+.scroll{
+    border: 1pt solid lightslategrey;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.submit td {
+    font-size: 1.2em;
+    margin: 5px;
+    padding: 5px;
+}

@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Rate My Cakes</h1>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <h4 class="row pb-2 mt-4 mb-2 border-bottom">Submit a cake to be rated</h4>
+      <form (submit)="onCreate()">
+        <table class="submit">
+          <tr>
+            <td><label for="baker">Baker Name:</label></td>
+            <td><input id="baker" type="text" name="newCake.baker" [(ngModel)]="newCake.baker"></td>
+          </tr>
+          <tr>
+            <td><label for="imgurl">Image URL:</label></td>
+            <td><input id="imgurl" type="text" name="newCake.imgurl" [(ngModel)]="newCake.imgurl"></td>
+          </tr>
+        </table>
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+      </form>
+    </div>
+    <div class="col-8 scroll">
+      <div *ngFor="let cake of cakes">
+        <div class="row cakerow">
+          <div class="col">
+            <img (click)="getCakeFromService(cake._id)" [src]="cake.imgurl" alt="cakepic">
+          </div>
+          <div class="col">
+            <form (submit)="onComment(cake._id)">
+              <input id="rating" type="number" name="newComment.rating" [(ngModel)]="newComment.rating" min="0" max="5" placeholder="Stars">
+              <textarea name="newComment.comment" [(ngModel)]="newComment.comment" cols="20" rows="3" placeholder="Type your comment here"></textarea>
+              <button type="submit" class="btn btn-info">Rate</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-show-cake *ngIf="cake" [cakeToShow]="cake"></app-show-cake>
+</div>
+
+<router-outlet></router-outlet>

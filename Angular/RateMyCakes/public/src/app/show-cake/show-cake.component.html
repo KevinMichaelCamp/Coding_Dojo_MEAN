@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <h3>Baked by {{ cakeToShow.baker }}</h3>
+        </div>
+        <div class="col-6">
+            
+            <img [src]="cakeToShow.imgurl" alt="cakepic">
+        </div>
+        <div class="col-4">
+            <div class="row pb-2 mt-4 mb-2 border-bottom" *ngFor="let comment of cakeToShow.comments">
+                <h6>"{{ comment.comment }}" </h6>
+                <h6> -{{ comment.rating }} stars</h6>
+            </div>
+        </div>
+    </div>
+    
+</div>

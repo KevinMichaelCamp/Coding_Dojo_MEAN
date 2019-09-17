@@ -8,6 +8,7 @@
   <div class="jumbotron vertical-center">
     <h1>RESTful API Tasks</h1>
   </div>
+  <app-create-task></app-create-task>
   <form class="form" (submit)="onCreate()">
     <h2>New Task</h2>
     <div class="row">
@@ -39,7 +40,7 @@
                 <h6>{{ t.description }}</h6>              
             </div>
             <div class="col">
-              <button class="btn btn-info" (click)="getTaskFromService(t._id)">Edit</button>
+              <button class="btn btn-primary" (click)="getTaskFromService(t._id)">Edit</button>
               <button class="btn btn-danger" (click)="onDelete(t._id)">Delete</button>
             </div>
           </div>

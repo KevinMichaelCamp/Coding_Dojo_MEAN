@@ -1,0 +1,17 @@
+.comments {
+    margin: 10px;
+}
+
+.container {
+    padding: 40px;
+    text-align: left;
+}
+
+h6{
+    display: block;
+}
+
+img {
+    height: 250px;
+    width: 350px;
+}
