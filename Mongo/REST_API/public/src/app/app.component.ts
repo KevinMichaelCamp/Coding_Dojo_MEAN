@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     ngOnInit() {
       this.getTasksFromService();
       this.newTask = { title: '', description: '' };
+      this.editTask = { title: '', description: '' };
     }
 
     getTasksFromService() {
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit {
       });
     }
 
-    getTaskFromService(id) {
+    getTaskFromService(id: string) {
       const task = this.httpService.getTasksID(id);
       task.subscribe((data: any) => {
         console.log('We got 1 task!', data);
@@ -43,15 +44,16 @@ export class AppComponent implements OnInit {
       this.newTask = { title: '', description: '' };
     }
 
-    // onEdit(id) {
-    //   const editTask = this.httpService.updateTask(id, this.editTask);
-    //   editTask.subscribe((data: any) => {
-    //     this.getTasksFromService();
-    //     console.log('Edited Task:', data);
-    //   });
-    // }
+    onEdit(id: string) {
+      const editTask = this.httpService.updateTask(id, this.editTask);
+      editTask.subscribe((data: any) => {
+        this.getTasksFromService();
+        console.log('Edited Task:', data);
+      });
+      this.editTask = { title: '', description: '' };
+    }
 
-    onDelete(id) {
+    onDelete(id: string) {
       const deleteTask = this.httpService.deleteTask(id);
       deleteTask.subscribe((result: any) => {
         console.log('Deleting 1 task', result);

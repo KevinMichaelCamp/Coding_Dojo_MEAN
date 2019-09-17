@@ -18,9 +18,9 @@ export class HttpService {
   createTask(newTask: object) {
     return this.http.post('/tasks', newTask);
   }
-  // updateTask(id: string, body) {
-  //   return this.http.patch(`/tasks/${id}`);
-  // }
+  updateTask(id: string, editTask: object) {
+    return this.http.patch(`/tasks/${id}`, editTask);
+  }
   deleteTask(id: string) {
     return this.http.delete(`/tasks/${id}`);
   }

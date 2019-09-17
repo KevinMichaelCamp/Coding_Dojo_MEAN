@@ -53,17 +53,15 @@
           <table>
             <tr>
               <td><label for="title">Title:</label></td>
-              <td><input type="text" name="editTask.title" id="title" [(ngModel)]="editTask.title" [value]="task.title"></td>
+              <td><input type="text" name="editTask.title" id="title" [(ngModel)]="editTask.title" [placeholder]="task.title" [value]="task.title"></td>
             </tr>
             <tr>
               <td><label for="description">Description:</label></td>
-              <td><input type="text" name="editTask.description" id="description" [(ngModel)]="editTask.description"></td>
+              <td><input type="text" name="editTask.description" id="description" [(ngModel)]="editTask.description" [placeholder]="task.description" [value]="task.description"></td>
             </tr>
           </table>
           <button class="btn btn-success indent" type="submit">Update Task</button>
         </form>
-        <h4>{{ task.title }}</h4>
-        <h5>{{ task.description }}</h5>
       </div>
     </div>
   </div>
