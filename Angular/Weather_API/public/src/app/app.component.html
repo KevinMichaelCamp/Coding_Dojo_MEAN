@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Dojo Weather Forecast</h1>
+  </div>
+  <nav>
+    <button class="btn btn-info m-1" [routerLink] = "['/burbank']">Burbank, CA</button>
+    <button class="btn btn-info m-1" [routerLink] = "['/chicago']">Chicago, IL</button>
+    <button class="btn btn-info m-1" [routerLink] = "['/dallas']">Dallas, TX</button>
+    <button class="btn btn-info m-1" [routerLink] = "['/washingtondc']">Washington, DC</button>
+    <button class="btn btn-info m-1" [routerLink] = "['/sanjose']">San Jose, CA</button>
+    <button class="btn btn-info m-1" [routerLink] = "['/seattle']">Seattle, WA</button>
+  </nav>
+</div>
+
+
+<router-outlet></router-outlet>

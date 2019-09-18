@@ -1,0 +1,8 @@
+.container {
+    padding: 25px;
+    text-align: center;
+}
+
+router-outlet {
+    margin: 40px;
+}
