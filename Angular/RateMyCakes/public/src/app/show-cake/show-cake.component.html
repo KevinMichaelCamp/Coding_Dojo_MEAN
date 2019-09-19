@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-2">
             <h3>Baked by {{ cakeToShow.baker }}</h3>
+            <p>Baked on: {{ cakeToShow.createdAt | dateAgo }}</p>
         </div>
         <div class="col-6">  
             <img [src]="cakeToShow.imgurl" alt="cakepic">

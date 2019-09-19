@@ -1,0 +1,13 @@
+a {
+  display: block;
+  font-weight: bold;
+}
+
+h2 {
+  display: inline-block;
+}
+
+label {
+  font-weight: bold;
+  margin: 10px 10px 10px 0;
+}

@@ -1,0 +1,18 @@
+button {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.container {
+    padding: 25px;
+    text-align: center;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+router-outlet {
+    margin: 40px;
+}

@@ -1,0 +1,9 @@
+<div class="container">
+  <a [routerLink]="['/home']">Home</a>
+  <h2 class="pb-2 mt-4 mb-2 border-bottom">Add a new author:</h2>
+  <form (submit)=onCreate()>
+    <label for="name">Name:</label>
+    <input type="text" name="name" [(ngModel)]="newAuthor.name">
+    <button type="button" class="btn btn-info m-2" [routerLink]="['/home']">Cancel</button><button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</div>

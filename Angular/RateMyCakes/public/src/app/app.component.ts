@@ -14,10 +14,6 @@ export class AppComponent implements OnInit {
 
   constructor(private cakesService: CakesService) {}
 
-  trackByIndex(index: number, obj: any): any {
-    return index;
-  }
-
   ngOnInit() {
     this.getCakesFromService();
     this.newCake = {baker: '', imgurl: ''};
@@ -42,7 +38,7 @@ export class AppComponent implements OnInit {
 
   onCreate() {
     const observable = this.cakesService.createCake(this.newCake);
-    observable.subscribe((data: object[]) => {
+    observable.subscribe((data: object) => {
       console.log('New cake created:', data);
       this.getCakesFromService();
     });

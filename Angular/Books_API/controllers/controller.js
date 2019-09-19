@@ -45,7 +45,7 @@ module.exports = {
       })
       .catch(err => res.json(err));
 
-    Book.remove({_id: req.params.id})
+    Book.deleteOne({_id: req.params.id})
       .then(result => {
         res.json(result ? result : "No such book in database")
       })
@@ -82,7 +82,7 @@ module.exports = {
   },
 
   delete_author: function(req, res){
-    Author.remove({_id: req.params.id})
+    Author.deleteOne({_id: req.params.id})
     .then(result => {
       res.json(result ? result : "No such author in database")
     })

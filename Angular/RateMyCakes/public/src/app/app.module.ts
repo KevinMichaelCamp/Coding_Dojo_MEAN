@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CakesService } from './cakes.service';
 import { ShowCakeComponent } from './show-cake/show-cake.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShowCakeComponent
+    ShowCakeComponent,
+    DateAgoPipe
   ],
   imports: [
     BrowserModule,

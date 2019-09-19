@@ -1,0 +1,12 @@
+a {
+  display: block;
+  font-weight: bold;
+}
+
+h2 {
+  display: inline-block;
+}
+
+td {
+  padding: 5px;
+}

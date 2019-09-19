@@ -33,7 +33,7 @@ module.exports = {
 
 
   destroy: function(req, res){
-    Cake.remove({_id: req.params.id})
+    Cake.deleteOne({_id: req.params.id})
       .then(result => res.json(result))
       .catch(err => res.json(err));
   }

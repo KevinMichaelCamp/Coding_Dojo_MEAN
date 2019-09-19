@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <nav>
+    <img class="navbar-brand" src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/1403/s300/profile3.png" alt="ShintoLogo">
+    <button class="btn btn-info m-1" [routerLink]="['/home']">Home</button>
+    <button class="btn btn-info m-1" [routerLink]="['/mine_coins']">Mine Coins</button>
+    <button class="btn btn-info m-1" [routerLink]="['/buy_coins']">Buy Coins</button>
+    <button class="btn btn-info m-1" [routerLink]="['/sell_coins']">Sell Coins</button>
+    <button class="btn btn-info m-1" [routerLink]="['/ledger']">Browse Ledger</button>
+  </nav>
+</div>
+
+
+<router-outlet></router-outlet>
