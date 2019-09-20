@@ -6,4 +6,5 @@
     <input type="text" name="name" [(ngModel)]="newAuthor.name">
     <button type="button" class="btn btn-info m-2" [routerLink]="['/home']">Cancel</button><button class="btn btn-success" type="submit">Submit</button>
   </form>
+  <h6 class="text-danger" *ngIf="errors">{{ errors }}</h6>
 </div>

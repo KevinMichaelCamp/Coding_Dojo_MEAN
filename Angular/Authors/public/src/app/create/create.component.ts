@@ -9,6 +9,7 @@ import { HttpService } from './../http.service';
 })
 export class CreateComponent implements OnInit {
   newAuthor: object;
+  errors: string;
 
   constructor(
     private httpService: HttpService,
@@ -18,18 +19,26 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.newAuthor = {name: ''};
+    this.errors = '';
     this.route.params.subscribe((params: Params) => {
-        console.log(params['id'])
+        console.log(params.id);
     });
   }
 
   onCreate() {
     const observable = this.httpService.createAuthor(this.newAuthor);
     observable.subscribe((data: object) => {
-      console.log('New author created', data);
+      if (data.errors) {
+        console.log(data);
+        console.log('ERROR:', data.message);
+        this.errors = data.errors.name.message;
+        this.newAuthor = { name: '' };
+      } else {
+        console.log('New author created', data);
+        this.newAuthor = { name: '' };
+        this.goHome();
+      }
     });
-    this.newAuthor = {name: ''};
-    this.goHome();
   }
 
   goHome() {

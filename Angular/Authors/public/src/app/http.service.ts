@@ -20,8 +20,9 @@ export class HttpService {
     return this.http.post('/authors', newAuthor);
   }
 
-  updateAuthor(id: string, newAuthor: object) {
-    return this.http.put(`/authors/${id}`, newAuthor);
+  updateAuthor(id: string, editAuthor: object) {
+    console.log(id);
+    return this.http.put(`/authors/${id}`, editAuthor);
   }
 
   deleteAuthor(id: string) {

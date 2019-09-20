@@ -1,9 +1,14 @@
 <div class="container">
   <a [routerLink]="['/home']">Home</a>
   <h2 class="pb-2 mt-4 mb-2 border-bottom">Edit this Author:</h2>
-  <form (submit)=onUpdate(author._id)>
+  <form (submit)="onUpdate()">
     <label for="name">Name:</label>
-    <input type="text" name="name" [(ngModel)]="editAuthor.name" [value]="author.name">
+    <input type="text" name="name" [(ngModel)]="editAuthor.name" [placeholder]="author.name">
     <button type="button" class="btn btn-info m-2" [routerLink]="['/home']">Cancel</button><button class="btn btn-success" type="submit">Submit</button>
   </form>
+  <div *ngIf="errors">
+    <h6 class="text-danger">Sorry, author ID not found. Would you like to add this
+      author?</h6>
+    <a [routerLink]="['/create']">Add an Author</a>
+  </div>
 </div>

@@ -3,7 +3,7 @@ var Author = require('../models/author');
 module.exports = {
 
   index_author: function(req, res){
-    Author.find()
+    Author.find({}, null, {sort: {name: 1}})
       .then(authors => res.json(authors))
       .catch(err => res.json(err));
   },
@@ -23,7 +23,7 @@ module.exports = {
   },
 
   update_author: function(req, res){
-    Author.findOneAndUpdate(req.params.id, req.body, {new: true})
+    Author.findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
       .then(result => {
         res.json(result ? result : "No such author in database")
       })

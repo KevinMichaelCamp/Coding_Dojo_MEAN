@@ -10,6 +10,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class EditComponent implements OnInit {
   author: object;
   editAuthor: object;
+  authorID: string;
+  errors: string;
 
   constructor(
     private httpService: HttpService,
@@ -19,22 +21,29 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.editAuthor = {name: ''};
+    this.errors = '';
     this.route.params.subscribe((params: Params) => {
-      console.log("Params ID: ", params['id']);
-      this.getAuthorFromService(params['id']);
-    })
+      console.log('Params ID: ', params.id);
+      this.authorID = params.id;
+      this.getAuthorFromService(params.id);
+    });
   }
 
   getAuthorFromService(id: string) {
     const observable = this.httpService.getAuthor(id);
     observable.subscribe((data: object) => {
-      console.log('Got 1 author by ID', data);
-      this.author = data;
+      if (data.message) {
+        console.log(data.message);
+        this.errors = data.message;
+      } else {
+        console.log('Got 1 author by ID', data);
+        this.author = data;
+      }
     });
   }
 
-  onUpdate(id: string) {
-    const observable = this.httpService.updateAuthor(id, this.editAuthor);
+  onUpdate() {
+    const observable = this.httpService.updateAuthor(this.authorID, this.editAuthor);
     observable.subscribe((data: object) => {
       console.log('Updated author', data);
     });

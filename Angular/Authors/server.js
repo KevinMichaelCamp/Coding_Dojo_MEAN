@@ -1,6 +1,7 @@
 const express   = require('express'),
       app       = express(),
       mongoose  = require('./config/mongoose');
+      
 
 app.use(express.json());
 app.use(express.static(__dirname + '/public/dist/public'));
