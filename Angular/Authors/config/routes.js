@@ -1,5 +1,5 @@
-var controller = require('../controllers/controller');
-path = require('path');
+var controller = require('../controllers/controller'),
+    path = require('path');
 
 module.exports = function(app){
   app.get('/authors', controller.index_author);

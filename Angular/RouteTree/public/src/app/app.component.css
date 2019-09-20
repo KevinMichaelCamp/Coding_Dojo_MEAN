@@ -1,0 +1,7 @@
+.container {
+    border: 2pt solid blue;
+    border-radius: 5px;
+    padding: 25px;
+    margin-top: 10px;
+    text-align: center;
+}
