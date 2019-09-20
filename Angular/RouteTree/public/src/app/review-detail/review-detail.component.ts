@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-review-detail',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./review-detail.component.css']
 })
 export class ReviewDetailComponent implements OnInit {
+  reviewID: any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.reviewID = params.id;
+    });
   }
 
 }

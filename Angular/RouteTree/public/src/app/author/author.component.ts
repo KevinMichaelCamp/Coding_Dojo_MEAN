@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
   selector: 'app-author',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./author.component.css']
 })
 export class AuthorComponent implements OnInit {
-
-  constructor() { }
+  authorID: any;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.authorID = params.id;
+    });
   }
 
 }
