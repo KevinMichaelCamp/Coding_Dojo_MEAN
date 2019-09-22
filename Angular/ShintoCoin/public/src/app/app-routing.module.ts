@@ -6,8 +6,7 @@ import { BuyCoinsComponent } from './buy-coins/buy-coins.component';
 import { SellCoinsComponent } from './sell-coins/sell-coins.component';
 import { BrowseLedgerComponent } from './browse-ledger/browse-ledger.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-
+import { TransactionComponent } from './transaction/transaction.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,6 +14,7 @@ const routes: Routes = [
   { path: 'buy_coins', component: BuyCoinsComponent },
   { path: 'sell_coins', component: SellCoinsComponent },
   { path: 'ledger', component: BrowseLedgerComponent },
+  { path: 'transaction/:id', component: TransactionComponent },
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: '**', component: PageNotFoundComponent },
 ];

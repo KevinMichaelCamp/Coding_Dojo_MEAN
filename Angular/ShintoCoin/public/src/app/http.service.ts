@@ -20,7 +20,7 @@ export class HttpService {
   mine() {
     const action = {
       id: this.actionID,
-      action: 'Mine',
+      action: 'Mined',
       amount: 1,
       value: this.value
     };
@@ -30,25 +30,29 @@ export class HttpService {
     this.actionID++;
   }
 
-  buy(amount: number) {
+  buy(amt: number) {
     const action = {
       id: this.actionID,
-      action: 'Buy',
-      amount: ('{amount}'),
+      action: 'Bought',
+      amount: amt,
       value: this.value
     };
+    this.ledger.push(action);
+    this.value++;
+    this.coins += amt;
+    this.actionID++;
   }
 
-  sell(amount: number) {
+  sell(amt: number) {
     const action = {
       id: this.actionID,
-      action: 'Sell',
-      amount: ('{amount}'),
+      action: 'Sold',
+      amount: amt,
       value: this.value
     };
     this.ledger.push(action);
     this.value--;
-    this.coins -= amount;
+    this.coins -= amt;
     this.actionID++;
   }
 }

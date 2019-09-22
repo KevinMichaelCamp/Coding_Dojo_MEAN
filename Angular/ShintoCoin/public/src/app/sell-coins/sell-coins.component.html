@@ -1,9 +1,10 @@
 <div class="container">
     <h1 class="display-1 row pb-2 mt-4 mb-2 border-bottom">Sell ShintoCoin</h1>
-    <h4>Current ShintoCoin Value: $1.00</h4>
-    <h4>Number of ShintoCoin Owned: 0</h4>
-    <form action="">
-        <input class="p-1 m-1" type="number">
+    <h4>Current ShintoCoin Value: ${{ value }}</h4>
+    <h4>Number of ShintoCoin Owned: {{ coins | number }}</h4>
+    <form (submit)="onSell()">
+        <input class="p-1 m-1" name="amount" type="number" min="0" step="1" [(ngModel)]="amount">
         <button type="submit" class="btn btn-success font-weight-bold ml-5">Sell</button>
     </form>
+    <p *ngIf="message" class="text-danger font-weight-bold">{{ message }}</p>
 </div>

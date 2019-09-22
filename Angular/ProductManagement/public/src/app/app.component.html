@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">Project Product Management</h1>
+  </div>
+  <a [routerLink]="['/home']">Home</a>
+  <a [routerLink]="['/products']">Product List</a>
+  <a [routerLink]="['/products/new']">Product Creation</a>
+</div>
+
+<router-outlet></router-outlet>

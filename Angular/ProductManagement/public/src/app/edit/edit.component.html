@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Edit Product</h1>
+    <form (submit)="onUpdate()">
+        <table>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input id="name" name="name" type="text" [(ngModel)]="editProduct.name" [value]="product.name"></td>
+            </tr>
+            <tr>
+                <td><label for="price">Price:</label></td>
+                <td><input id="price" name="price" type="number" [(ngModel)]="editProduct.price" [value]="product.price"></td>
+            </tr>
+            <tr>
+                <td><label for="imgurl">Image url:</label></td>
+                <td><input id="imgurl" name="imgurl" type="text" [(ngModel)]="editProduct.imgurl" [value]="product.imgurl"></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary m-1" type="submit">Update</button>
+        <button (click)="onDelete(product._id)" class="btn btn-danger" type="button">Delete</button>
+    </form>
+</div>

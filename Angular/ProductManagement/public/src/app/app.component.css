@@ -1,0 +1,14 @@
+a {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.container {
+    padding: 25px;
+    text-align: center;
+}
+
+.jumbotron {
+    padding: 20px !important;
+}

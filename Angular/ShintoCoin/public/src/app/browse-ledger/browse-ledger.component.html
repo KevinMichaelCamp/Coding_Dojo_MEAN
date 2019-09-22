@@ -1,19 +1,22 @@
 <div class="container">
     <h1 class="display-1 row pb-2 mt-4 mb-2 border-bottom">Browse the Ledger</h1>
     <h4>Here you can browse all ShintoCoin transactions</h4>
-    <table>
-        <thead>
-            <th>Action</th>
-            <th>Amount</th>
-            <th>Value</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Mined</td>
-                <td>1</td>
-                <td>2</td>
-                <td><button>Details</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <th>Action</th>
+                <th>Amount</th>
+                <th>Value</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let action of ledger">
+                    <td>{{ action.action }}</td>
+                    <td>{{ action.amount | number }}</td>
+                    <td>{{ action.value }}</td>
+                    <td><button [routerLink]="['/transaction', action.id]" class="btn btn-outline-info">Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

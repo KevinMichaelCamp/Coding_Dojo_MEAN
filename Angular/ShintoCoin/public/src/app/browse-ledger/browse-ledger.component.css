@@ -1,3 +1,19 @@
 h1 {
     display: inline-block;
 }
+
+td, th{
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+.table-responsive {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.table-responsive th{
+    background-color: white;
+    position: sticky;
+    top: 0;
+}
