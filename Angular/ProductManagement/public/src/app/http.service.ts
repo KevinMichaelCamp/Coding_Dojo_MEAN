@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
+  products: object[];
 
   constructor(private http: HttpClient) { }
 
@@ -27,4 +28,13 @@ export class HttpService {
   deleteProduct(id: string) {
     return this.http.delete(`/product/${id}`);
   }
+
+  getAllProducts() {
+    const observable = this.getProducts();
+    observable.subscribe((data: object[]) => {
+      this.products = data;
+      console.log('service', this.products);
+    });
+  }
+
 }

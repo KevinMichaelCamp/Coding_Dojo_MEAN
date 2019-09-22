@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class NewComponent implements OnInit {
   newProduct: object;
   products: object;
+  messages: string[];
 
   constructor(
     private httpService: HttpService,
@@ -20,6 +21,7 @@ export class NewComponent implements OnInit {
 
   ngOnInit() {
     this.newProduct = {name: '', price: '', imgurl: ''};
+    this.messages = [];
   }
 
   getProductsFromService() {
@@ -31,17 +33,24 @@ export class NewComponent implements OnInit {
   }
 
   onCreate() {
+    this.messages = [];
     const observable = this.httpService.createProduct(this.newProduct);
-    observable.subscribe((data: object) => {
-      console.log('Created new product', data);
+    observable.subscribe((data: any) => {
+      if (data.errors) {
+        this.messages.push(data.errors.name.message);
+        this.messages.push(data.errors.price.message);
+      } else {
+        console.log('Created new product', data);
+        this.gotoProducts();
+      }
     });
     this.newProduct = { name: '', price: '', imgurl: '' };
-    this.getProductsFromService();
-    this.gotoProducts();
   }
 
   gotoProducts() {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/products'], {
+      queryParams: { refresh: new Date().getTime() }
+    });
   }
 
 }

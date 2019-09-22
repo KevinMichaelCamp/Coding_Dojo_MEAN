@@ -4,20 +4,23 @@
         <table>
             <tr>
                 <td><label for="name">Name:</label></td>
-                <td><input id="name" name="name" type="text" [(ngModel)]="newProduct.name" [value]="product.name"></td>
+                <td><input id="name" name="name" type="text" [(ngModel)]="newProduct.name" [value]="product?.name" required minlength="4"></td>
             </tr>
             <tr>
                 <td><label for="price">Price:</label></td>
                 <td><input id="price" name="price" type="number" [(ngModel)]="newProduct.price"
-                        [value]="product.price"></td>
+                        [value]="product?.price" required></td>
             </tr>
             <tr>
                 <td><label for="imgurl">Image url:</label></td>
                 <td><input id="imgurl" name="imgurl" type="text" [(ngModel)]="newProduct.imgurl"
-                        [value]="product.imgurl"></td>
+                        [value]="product?.imgurl"></td>
             </tr>
         </table>
         <button class="btn btn-primary m-1" type="submit">Create</button>
         <button [routerLink]="['/products']" class="btn btn-info" type="button">Cancel</button>
     </form>
+    <div *ngIf="messages">
+        <p *ngFor="let error of messages" class="text-danger font-weight-bold">{{ error }}</p>
+    </div>
 </div>

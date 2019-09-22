@@ -11,7 +11,8 @@ import { HttpService} from '../http.service';
 export class EditComponent implements OnInit {
   productID: any;
   product: object;
-  editProduct: object;
+  editProduct: any;
+  messages: string[];
 
   constructor(
     private httpService: HttpService,
@@ -27,6 +28,7 @@ export class EditComponent implements OnInit {
       this.editProduct = {name: '', price: '', imgurl: ''};
       this.getProduct();
     });
+    this.messages = [];
   }
 
   getProduct() {
@@ -38,12 +40,21 @@ export class EditComponent implements OnInit {
   }
 
   onUpdate() {
-    const observable = this.httpService.updateProduct(this.productID, this.editProduct);
-    observable.subscribe((data: object) => {
-      console.log('Edited product', data);
-    });
-    this.editProduct = { name: '', price: '', imgurl: '' };
-    this.gotoProducts();
+    this.messages = [];
+    if (this.editProduct.name.length < 5) {
+      this.messages.push('Name must be at least 4 characters');
+    } else if (this.editProduct.name === '') {
+      this.messages.push('Name is required');
+    } else if (this.editProduct.price === '') {
+      this.messages.push('Price is required');
+    } else {
+      const observable = this.httpService.updateProduct(this.productID, this.editProduct);
+      observable.subscribe((data: object) => {
+        console.log('Edited product', data);
+      });
+      this.editProduct = { name: '', price: '', imgurl: '' };
+      this.gotoProducts();
+    }
   }
 
   onDelete(id: string) {
@@ -55,6 +66,8 @@ export class EditComponent implements OnInit {
   }
 
   gotoProducts() {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/products'], {
+      queryParams: { refresh: new Date().getTime() }
+    });
   }
 }

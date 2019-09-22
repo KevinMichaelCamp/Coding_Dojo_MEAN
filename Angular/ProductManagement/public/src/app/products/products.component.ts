@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './../http.service';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -9,11 +10,21 @@ import { HttpService } from './../http.service';
 export class ProductsComponent implements OnInit {
   products: object[];
 
-  constructor(private httpService: HttpService) {
+  constructor(
+    private httpService: HttpService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+    ) {
     this.getProductsFromService();
   }
 
   ngOnInit() {
+    this.activatedRoute.queryParamMap.subscribe((paramMap: ParamMap) => {
+      const refresh = paramMap.get('refresh');
+      if (refresh) {
+        this.getProductsFromService();
+      }
+    });
   }
 
   getProductsFromService() {
