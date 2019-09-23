@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Anonymous Notes</h1>
+  <form (submit)="onSubmit()">
+    <label for="note">Note:</label>
+    <input type="text" name="note" id="note" [(ngModel)]="newNote.content">
+    <button type="submit">Add Note</button>
+  </form>
+  <app-list-notes *ngIf="notes" [notes]="notes"></app-list-notes>
+  <router-outlet></router-outlet>
+</div>

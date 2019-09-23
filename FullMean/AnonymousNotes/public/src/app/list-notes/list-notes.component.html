@@ -1,0 +1,6 @@
+<div class="container">
+    <div class="note" *ngFor="let note of notes">
+        <h5 class="align-right">{{ note.createdAt | date : 'medium'  }}</h5>
+        <h3>{{ note.content }}</h3>
+    </div>
+</div>

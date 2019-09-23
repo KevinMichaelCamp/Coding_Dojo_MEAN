@@ -7,26 +7,27 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   products: object[];
 
-  constructor(private http: HttpClient) { }
+  // tslint:disable-next-line:variable-name
+  constructor(private _http: HttpClient) { }
 
   getProducts() {
-    return this.http.get('/product');
+    return this._http.get('/product');
   }
 
   getProduct(id: string) {
-    return this.http.get(`/product/${id}`);
+    return this._http.get(`/product/${id}`);
   }
 
   createProduct(newProduct: object) {
-    return this.http.post('/product', newProduct);
+    return this._http.post('/product', newProduct);
   }
 
   updateProduct(id: string, editProduct: object) {
-    return this.http.put(`/product/${id}`, editProduct);
+    return this._http.put(`/product/${id}`, editProduct);
   }
 
   deleteProduct(id: string) {
-    return this.http.delete(`/product/${id}`);
+    return this._http.delete(`/product/${id}`);
   }
 
   getAllProducts() {

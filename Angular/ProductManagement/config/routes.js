@@ -1,5 +1,5 @@
-var controller = require('../controllers/controller'),
-    path = require('path');
+var controller  = require('../controllers/controller'),
+    path        = require('path');
 
 module.exports = function(app){
   app.get('/product', controller.index_product);
@@ -8,6 +8,6 @@ module.exports = function(app){
   app.put('/product/:id', controller.update_product);
   app.delete('/product/:id', controller.delete_product);
   app.all("*", (req,res,next) => {
-  res.sendFile(path.resolve("./public/dist/public/index.html"))
+    res.sendFile(path.resolve("./public/dist/public/index.html"))
 });
 }
