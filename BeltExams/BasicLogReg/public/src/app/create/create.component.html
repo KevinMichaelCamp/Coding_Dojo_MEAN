@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Add a Movie</h1>
+  </div>
+  <form (submit)="onSubmit()">
+    <table>
+      <tr>
+        <td><label for="title">Movie Title:</label></td>
+        <td><input id="title" type="text" name="title" [(ngModel)]="movie.title"></td>
+      </tr>
+      <tr>
+        <td><label for="year">Release Year:</label></td>
+        <td><input id="year" type="text" name="year" [(ngModel)]="movie.year"></td>
+      </tr>
+    </table>
+    <button class="btn btn-success m-5" type="submit">Add Movie</button>
+    <a [routerLink]="['/index']"><button class="btn btn-info">All Movies</button></a>
+    <button class="btn btn-info m-5" (click)="logout()">Logout</button>
+  </form>
+  <p class="text-danger font-weight-bold" *ngFor="let error of messages">{{ error }}</p>
+</div>

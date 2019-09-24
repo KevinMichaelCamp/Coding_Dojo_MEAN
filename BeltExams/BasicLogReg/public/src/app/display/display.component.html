@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Movie Details</h1>
+  </div>
+  <h4>Title: {{ movie?.title }}</h4>
+  <h4>Year: {{ movie?.year }}</h4>
+  <h4>{{ movie?.likes }} likes</h4>
+  <button class="btn btn-success m-5"(click)="onSubmit()">Like Movie</button>
+  <a [routerLink]="['/index']"><button class="btn btn-info">All Movies</button></a>
+  <button class="btn btn-info m-5" (click)="logout()">Logout</button>
+</div>

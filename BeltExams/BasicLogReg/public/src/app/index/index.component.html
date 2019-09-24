@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>All Movies</h1>
+    <h4>Welcome, {{ loggedIn?.name }}!</h4>
+  </div>
+  <table>
+    <thead>
+      <th>Movie Title</th>
+      <th>Release Year</th>
+      <th>Uploaded By</th>
+      <th>Likes</th>
+      <th>Action</th>
+    </thead>
+    <tbody *ngFor="let user of users">
+      <tr *ngFor="let movie of user.movies">
+        <td><a [routerLink]="['/display/' + movie._id]">{{ movie.title }}</a></td>
+        <td>{{ movie.year }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ movie.likes }}</td>
+        <td><button class="btn btn-sm btn-danger m-1" *ngIf="user._id === loggedIn?._id">Delete</button>
+      </tr>
+    </tbody>
+  </table>
+  <a [routerLink]="['/create']"><button class="btn btn-primary m-5">Add a Movie</button></a>
+  <button class="btn btn-info m-5" (click)="logout()">Logout</button>
+</div>

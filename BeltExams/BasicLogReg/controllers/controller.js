@@ -3,29 +3,53 @@ var User  = require('../models/user'),
 
 module.exports = {
 
-  login: function
+  login: function(req, res){
+    User.findOne({email: req.body.email}, (err, user) => {
+      if (err) {
+        res.json('lol', err);
+      } else if (user) {
+        req.session.user = user;
+        res.json({user: user})
+      } else {
+        User.create(req.body)
+          .then(user => {
+            req.session.user = user;
+            res.json(user)
+          })
+          .catch(err => res.json(err));
+      }
+    });
+  },
+
+  logout: function(req, res){
+    req.session.destroy();
+    res.json('Session ended, bye!')
+  },
+
+  getID: function(req, res) {
+    if (req.session.user) {
+      res.json(req.session.user)
+    } else {
+      res.status(500).json('Not logged in')
+    }
+  },
+
   index_user: function(req, res){
     User.find()
       .then(users => res.json(users))
       .catch(err => res.json(err));
   },
 
-  create_user: function(req, res){
-    User.create(req.body)
-      .then(user => res.json(user))
-      .catch(err => res.json(err));
-  },
-
   read_user: function(req, res){
-    User.findOne({name: req.params.name})
+    User.findOne({_id: req.params.id})
       .then(user => {
         res.json(user ? user : "No such user in database")
       })
       .catch(err => res.json(err));
   },
 
-  update_user: function(req, res){
-    User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
+  update_user: function(req, res) {
+    User.findOneAndUpdate({_id: req.params.id}, req.body), {new: true}
       .then(user => {
         res.json(user ? user : "No such user in database")
       })
@@ -36,6 +60,56 @@ module.exports = {
     User.deleteOne({_id: req.params.id})
     .then(user => {
       res.json(user ? user : "No such user in database")
+    })
+    .catch(err => res.json(err));
+  },
+
+  index_movie: function(req, res){
+    Movie.find()
+      .then(movie => res.json(movie))
+      .catch(err => res.json(err));
+  },
+
+  create_movie: function(req, res){
+    var movie = new Movie({
+      title: req.body.title,
+      year: req.body.year,
+      likes: req.body.likes,
+      _user: req.params.id
+    });
+    movie.save()
+      .then(newMovie => {
+        User.findOneAndUpdate({_id: req.params.id}, {$addToSet: {movies: newMovie}}, {new: true}, function(err, data){
+          if (err) {
+            res.json(err)
+          } else {
+            res.json(data)
+          }
+        })
+      })
+      .catch(err => res.json(err));
+  },
+
+  update_movie: function(req, res){
+      Movie.findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
+      .then(movie => {
+        res.json(movie ? movie : "No such movie in database")
+      })
+      .catch(err => res.json(err));
+  },
+
+  read_movie: function(req, res){
+    Movie.findOne({_id: req.params.id})
+      .then(movie => {
+        res.json(movie ? movie : "No such movie in database")
+      })
+      .catch(err => res.json(err));
+  },
+
+  delete_movie: function(req, res){
+    Movie.deleteOne({_id: req.params.id})
+    .then(movie => {
+      res.json(movie ? movie : "No such movie in database")
     })
     .catch(err => res.json(err));
   },

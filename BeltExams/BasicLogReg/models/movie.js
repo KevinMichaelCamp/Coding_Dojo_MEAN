@@ -3,10 +3,18 @@ var mongoose    = require('mongoose'),
 let Schema      = mongoose.Schema;
 
 var MovieSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
-    required: [true, "Name is required"],
-    minlength: [2, "Name must be at least 2 characters"]
+    required: [true, "Title is required"],
+    minlength: [2, "Title must be at least 2 characters"]
+  },
+  year: {
+    type: Number,
+    required: [true, "Release year required"]
+  },
+  likes: {
+    type: Number,
+    default: 0
   },
   _user: {
     type: Schema.Types.ObjectId,

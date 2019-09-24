@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+button {
+  font-weight: bold !important;
+}
+
+.container {
+  padding: 25px;
+  text-align: center;
+}
+
+label {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+}
