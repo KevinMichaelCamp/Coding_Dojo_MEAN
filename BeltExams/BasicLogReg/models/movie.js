@@ -1,6 +1,6 @@
 var mongoose    = require('mongoose'),
-    User        = require('./user');
-let Schema      = mongoose.Schema;
+    User        = require('./user'),
+    Schema      = mongoose.Schema;
 
 var MovieSchema = new mongoose.Schema({
   title: {

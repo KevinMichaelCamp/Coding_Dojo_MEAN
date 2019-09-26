@@ -1,0 +1,28 @@
+.links {
+  text-align: right;
+}
+
+.table-responsive {
+  height: 500px;
+  margin: 40px 0 0 35px;
+  overflow-y: scroll;
+}
+
+.table-responsive th{
+  position: sticky;
+  top: 0;
+}
+
+td, th {
+  border: 1pt solid black;
+  font-size: 1.25em;
+  padding: 10px;
+}
+
+th {
+  background-color: white;  
+}
+
+.search {
+  text-align: right;
+}

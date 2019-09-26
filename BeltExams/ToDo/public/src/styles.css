@@ -1,0 +1,17 @@
+a, label {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+button {
+  font-weight: bold !important; 
+}
+
+.container {
+  padding: 25px;
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+}

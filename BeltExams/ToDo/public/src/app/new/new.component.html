@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>New</h1>
+  <form (submit)=onSubmit()>
+    <table>
+      <tr>
+        <td><label for="date">Date:</label></td>
+        <td><input id="date" type="date" name="date" [(ngModel)]="newAppt.date"></td>
+        <td><label for="time">Time:</label></td>
+        <td><input id="time" type="text" name="time" [(ngModel)]="newAppt.time"></td>
+      </tr>
+      <tr>
+        <td><label for="complaint">Complaint:</label></td>
+        <td colspan="3"><textarea id="complaint" name="complaint" [(ngModel)]="newAppt.complaint" rows="8" cols="80"></textarea></td>
+      </tr>
+    </table>
+    <button class="btn btn-info m-1" type="button" (click)="gotoDashboard()">Cancel</button>
+    <button class="btn btn-primary m-1" type="submit">Add Appointment</button>
+  </form>
+  <p class="text-danger font-weight-bold" *ngFor="let error of messages">{{ error }}</p>
+</div>

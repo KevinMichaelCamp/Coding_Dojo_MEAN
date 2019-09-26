@@ -44,7 +44,15 @@ export class HttpService {
     return this._http.put(`/movies/${id}`, movie);
   }
 
-  updateUser(id: string, user: object) {
-    return this._http.put(`/users/${id}`, user);
+  updateUserMovie(uid: string, mid: string, movieEdit: object) {
+    return this._http.put(`/users/${uid}/${mid}`, movieEdit);
+  }
+
+  deleteMovie(id: string) {
+    return this._http.delete(`/movies/${id}`);
+  }
+
+  deleteMovieFromUser(uid: string, mid: string) {
+    return this._http.delete(`/movies/${uid}/${mid}`);
   }
 }

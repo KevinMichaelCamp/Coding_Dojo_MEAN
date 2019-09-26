@@ -6,7 +6,7 @@ module.exports = function(app){
   app.get('/session/logout', controller.logout);
   app.get('/session', controller.getID);
   app.get('/users', controller.index_user);
-  app.put('/users/:id', controller.update_user);
+  app.put('/users/:uid/:mid', controller.update_user_movie);
   app.get('/users/:id', controller.read_user);
   app.delete('/users/:id', controller.delete_user);
   app.get('/movies', controller.index_movie);
@@ -14,6 +14,7 @@ module.exports = function(app){
   app.put('/movies/:id', controller.update_movie);
   app.get('/movies/:id', controller.read_movie);
   app.delete('/movies/:id', controller.delete_movie);
+  app.delete('/movies/:uid/:mid', controller.delete_user_movie);
   app.all("*", (req,res,next) => {
     res.sendFile(path.resolve("./public/dist/public/index.html"))
 });

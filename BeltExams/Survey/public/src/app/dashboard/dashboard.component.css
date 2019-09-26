@@ -1,0 +1,40 @@
+a {
+    margin: 10px;
+}
+
+.container {
+    font-family: arial;
+    font-size: 1.25em;
+    padding: 25px;
+}
+
+form {
+    text-align: right;
+}
+
+input {
+    font-size: 1.25em;
+    margin: 10px;
+    padding: 5px;
+    width: 250px;
+}
+
+.links {
+    text-align: right;
+}
+
+table {
+    border: 1pt solid black;
+    border-collapse: collapse;
+    margin: 50px;
+}
+
+td, th {
+    border-right: 1pt solid black;
+    border-left: 1pt solid black;
+    padding: 10px;
+}
+
+thead {
+    background-color: lightgrey;
+}

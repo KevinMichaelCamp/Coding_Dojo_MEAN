@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="links">
+    <a href="" (click)="logout()">Logout</a>
+  </div>
+  <h1>Schedule</h1>
+  <div class="search">
+    <label for="search">Search:</label>
+    <input type="text" name="search" [(ngModel)]="search">
+  </div>
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Name</th>
+        <th>Complaint</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appt of appts">
+          <td>{{ appt.date | date }}</td>
+          <td>{{ appt.time | twentyFour }}</td>
+          <td>{{ appt.patient }}</td>
+          <td>{{ appt.complaint }}<button class="btn btn-sm btn-danger m-2" *ngIf="appt._user === loggedIn?._id" (click)="onDelete(appt._id)">Cancel</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-primary m-5" (click)="onClick()">Add New Appointment</button>
+</div>

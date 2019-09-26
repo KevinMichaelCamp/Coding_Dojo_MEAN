@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="links">
+        <a [routerLink]="['/dashboard']">Cancel</a>
+    </div>
+    <h1>Put the questions and options here:</h1>
+    <form (submit)="onNew()">
+        <table>
+            <tr>
+                <td><label for="question">Question:</label></td>
+                <td><input class="wide" type="text" name="question" id="question" [(ngModel)]="newSurvey.question"></td>
+            </tr>
+            <tr>
+                <td><label for="option_1">Option 1:</label></td>
+                <td><input type="text" name="option_1" id="option_1" [(ngModel)]="newSurvey.option_1.answer"></td>
+            </tr>
+            <tr>
+                <td><label for="option_2">Option 2:</label></td>
+                <td><input type="text" name="option_2" id="option_2" [(ngModel)]="newSurvey.option_2.answer"></td>
+            </tr>
+            <tr>
+                <td><label for="option_3">Option 3:</label></td>
+                <td><input type="text" name="option_3" id="option_3" [(ngModel)]="newSurvey.option_3.answer"></td>
+            </tr>
+            <tr>
+                <td><label for="option_4">Option 4:</label></td>
+                <td><input type="text" name="option_4" id="option_4" [(ngModel)]="newSurvey.option_4.answer"></td>
+            </tr>
+        </table>
+        <button type="submit">Create Poll</button>
+    </form>
+    <p class="danger" *ngIf="message">{{ message }}</p>
+</div>

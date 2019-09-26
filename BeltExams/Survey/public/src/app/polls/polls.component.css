@@ -1,0 +1,17 @@
+a {
+    margin: 10px;
+}
+
+.container {
+    font-family: arial;
+    font-size: 1.25em;
+    padding: 25px;
+}
+
+.links {
+    text-align: right;
+}
+
+td {
+    text-align: center;
+}

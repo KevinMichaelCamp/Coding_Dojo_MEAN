@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   messages: string[];
 
   constructor(
+    // tslint:disable-next-line:variable-name
     private _httpService: HttpService,
     private router: Router
   ) { }
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
       console.log('Log In Attempt:', data);
       if (data.errors) {
         console.log(data.errors);
-        for (let i in data.errors) {
+        for (const i in data.errors) {
           this.messages.push(data.errors[i].message);
         }
       } else {

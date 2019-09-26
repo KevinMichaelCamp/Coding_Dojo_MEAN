@@ -1,0 +1,35 @@
+a {
+    margin: 10px;
+}
+
+button {
+    font-weight: bold;
+    margin: 10px 0 0 300px;
+    padding: 5px;
+}
+
+.container {
+    font-family: arial;
+    font-size: 1.25em;
+    padding: 25px;
+}
+
+
+input {
+    font-size: 1.25em;
+    margin: 10px;
+    padding: 5px;
+    width: 250px;
+}
+
+label {
+    margin: 10px;
+}
+
+.links {
+    text-align: right;
+}
+
+.wide {
+    width: 500px;
+}

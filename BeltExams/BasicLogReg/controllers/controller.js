@@ -48,8 +48,9 @@ module.exports = {
       .catch(err => res.json(err));
   },
 
-  update_user: function(req, res) {
-    User.findOneAndUpdate({_id: req.params.id}, req.body), {new: true}
+  update_user_movie: function(req, res) {
+    let movie = Movie.findOne({_id: req.params.mid});
+    User.findOneAndUpdate({_id: req.params.uid}, {$set: {movies: ({_id: req.params.mid}, req.params.body)}}, {new: true})
       .then(user => {
         res.json(user ? user : "No such user in database")
       })
@@ -109,9 +110,29 @@ module.exports = {
   delete_movie: function(req, res){
     Movie.deleteOne({_id: req.params.id})
     .then(movie => {
+      console.log("Movie deleted", movie)
       res.json(movie ? movie : "No such movie in database")
     })
     .catch(err => res.json(err));
   },
+
+  delete_user_movie: function(req, res){
+    User.find({_id: req.params.uid})
+      .then(user => {
+        for (let i = 0; i < user[0].movies.length; i++){
+          if (user[0].movies[i]._id == req.params.mid){
+            user[0].movies.splice(i, 1)
+          }
+        }
+        user[0].save()
+        .then((newUser) => {
+          User.find({})
+          .then((users) => {
+            res.json(users)
+          })
+        })
+      })
+      .catch(err => res.json(err));
+  }
 
 }

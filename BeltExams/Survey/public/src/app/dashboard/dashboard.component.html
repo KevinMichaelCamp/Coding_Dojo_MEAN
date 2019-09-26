@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="links">
+        <a [routerLink]="['/new']">Create a New Poll</a>
+        <a [routerLink]="['/login']">Logout</a>
+    </div>
+    <h1>Current Polls:</h1>
+    <form action="SEARCH">
+        <input type="text" placeholder="Search">
+    </form>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Survey Question</th>
+            <th>Date Posted</th>
+            <th>Action</th>
+        </thead>
+        <tbody *ngFor="let user of users">
+            <tr *ngFor="let survey of user.surveys">
+                <td>{{ user.name }}</td>
+                <td><a [routerLink]="['/polls/' + survey._id ]">{{ survey.question }}</a></td>
+                <td>{{ survey.createdAt | date }}</td>
+                <td><button *ngIf="user._id === survey._user" type="button">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

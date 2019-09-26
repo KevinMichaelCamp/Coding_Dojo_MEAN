@@ -8,7 +8,6 @@
       <th>Movie Title</th>
       <th>Release Year</th>
       <th>Uploaded By</th>
-      <th>Likes</th>
       <th>Action</th>
     </thead>
     <tbody *ngFor="let user of users">
@@ -16,8 +15,7 @@
         <td><a [routerLink]="['/display/' + movie._id]">{{ movie.title }}</a></td>
         <td>{{ movie.year }}</td>
         <td>{{ user.name }}</td>
-        <td>{{ movie.likes }}</td>
-        <td><button class="btn btn-sm btn-danger m-1" *ngIf="user._id === loggedIn?._id">Delete</button>
+        <td><button (click)="onDelete(movie._id)"class="btn btn-sm btn-danger m-1" *ngIf="user._id === loggedIn?._id">Delete</button>
       </tr>
     </tbody>
   </table>
