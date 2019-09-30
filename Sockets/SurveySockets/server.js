@@ -16,4 +16,4 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 require('./config/routes.js')(app);
 const server = app.listen(1337, () => console.log('Listening on port 1337'));
-const io = require('socket.io')(server);
+const route = require('./config/routes')(app, server);
