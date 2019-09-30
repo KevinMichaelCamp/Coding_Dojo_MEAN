@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Epic Button Game</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      // triggers the connection event in our server
+      var socket = io.connect();
+      //submit data to server when Eipc Button is pressed
+      $('#epic_button').click(function(e){
+        e.preventDefault();
+        socket.emit('add_one')
+      });
+      $('#reset').click(function(e){
+        e.preventDefault();
+        socket.emit('reset')
+      });
+      //display emit response with number clicks
+      socket.on('updated_count', function(data){
+        $('#message').html(`The button has been pressed ${JSON.stringify(data.response)} time(s)`)
+      });
+    })
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-1">Epic Button Game</h1>
+    </div>
+    <div id="message"></div>
+    <button id="epic_button" class="btn btn-lrg btn-primary" type="button">Push the Epic Button</button>
+    <button id="reset" class="btn btn-sm btn-danger" type="button">Reset Count</button>
+  </div>
+</body>
+
+</html>

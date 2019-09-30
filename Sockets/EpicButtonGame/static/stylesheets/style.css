@@ -1,0 +1,9 @@
+button {
+  display: block !important;
+  font-weight: bold !important;
+  margin: 20px !important;
+}
+
+.container {
+  padding: 50px;
+}
