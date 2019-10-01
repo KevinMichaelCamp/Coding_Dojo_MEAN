@@ -1,0 +1,12 @@
+button {
+  font-size: 2em !important;
+  font-weight: bold !important;
+  margin: 20px !important;
+}
+
+.container {
+  margin: 50px;
+  padding: 50px;
+  height: 750px;
+  text-align: center;
+}
