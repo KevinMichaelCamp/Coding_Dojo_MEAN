@@ -1,5 +1,5 @@
-var mongoose    = require('mongoose'),
-    MovieSchema  = require('./movie');
+var mongoose = require('mongoose'),
+  MovieSchema = require('./movie');
 
 var UserSchema = new mongoose.Schema({
   name: {
@@ -12,7 +12,9 @@ var UserSchema = new mongoose.Schema({
     required: [true, "Email is required"],
   },
   movies: [MovieSchema]
-}, {timestamps: true})
+}, {
+  timestamps: true
+})
 
 var User = mongoose.model('User', UserSchema);
 module.exports = User;

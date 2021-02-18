@@ -1,4 +1,4 @@
-var mongoose    = require('mongoose');
+var mongoose = require('mongoose');
 
 var ProductSchema = new mongoose.Schema({
   name: {
@@ -14,7 +14,9 @@ var ProductSchema = new mongoose.Schema({
   imgurl: {
     type: String,
   }
-}, {timestamps: true})
+}, {
+  timestamps: true
+})
 
 var Product = mongoose.model('Product', ProductSchema);
 module.exports = Product;
